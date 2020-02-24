@@ -1,6 +1,7 @@
 let addR = document.querySelector("#addR");
 let delR = document.querySelector("#delR");
 let contRow = document.querySelector("#contRow");
+let total = document.querySelector("#total");
 
 let contador = 0;
 
@@ -27,6 +28,7 @@ addR.addEventListener('click', ()=>{
     input2.setAttribute("type", "text");
     input2.setAttribute("class", "inp");
     input2.setAttribute("id", "precio"+contador);
+    input2.setAttribute("onchange","laSuma(this.value)");
     divRow.appendChild(divCol2);
     divCol2.appendChild(input2);
 });
@@ -34,6 +36,36 @@ addR.addEventListener('click', ()=>{
 
 delR.addEventListener('click', ()=>{
     let row = document.querySelector("#mi"+contador);
+    laResta();
     row.remove();
     contador--;
 });
+
+
+let sumaArr = [];
+let iterador = 0;
+let lastId = "";
+function laSuma(num, id){
+    sumaArr[iterador] = num;
+    iterador++;
+    sumItem();
+    console.log(sumaArr);
+    lastId = id;
+}
+
+function laResta(){
+    let len = sumaArr.length - 1;
+    sumaArr.splice(len);
+    iterador--;
+    sumItem();
+    console.log(sumaArr);
+    
+}
+
+function sumItem(){
+    let n = 0;
+    for(let i of sumaArr){
+        n += parseFloat(i);
+    }
+    total.innerHTML = n;
+}

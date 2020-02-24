@@ -16,14 +16,16 @@
 
     <button class="btn-primary ml-5" id="addR">Agregar</button>
     <button class="btn-danger" id="delR">Eliminar</button>
+    <br>
+    <p id="total">Total: </p>
 
     <div class="contairner mt-5 ml-5" id="contRow">
         <div class="row">
             <div class="col-6">
-                <input class="inp" type="text" name="" id="">
+                <input class="inp" type="text" name="" id="accesorio0">
             </div>
             <div class="col-6">
-                <input class="inp" type="text">
+                <input class="inp" type="text" id="precio0" onchange="laSuma(this.value, this.id)">
             </div>
         </div>
     </div>
